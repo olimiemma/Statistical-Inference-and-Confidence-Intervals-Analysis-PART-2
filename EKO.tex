@@ -1,0 +1,903 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Foundations for statistical inference - Confidence intervals},
+  pdfauthor={Emmanuel Kasigazi},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Foundations for statistical inference - Confidence intervals}
+\author{Emmanuel Kasigazi}
+\date{}
+
+\begin{document}
+\maketitle
+
+If you have access to data on an entire population, say the opinion of
+every adult in the United States on whether or not they think climate
+change is affecting their local community, it's straightforward to
+answer questions like, ``What percent of US adults think climate change
+is affecting their local community?''. Similarly, if you had demographic
+information on the population you could examine how, if at all, this
+opinion varies among young and old adults and adults with different
+leanings. If you have access to only a sample of the population, as is
+often the case, the task becomes more complicated. What is your best
+guess for this proportion if you only have data from a small sample of
+adults? This type of situation requires that you use your sample to make
+inference on what your population looks like.
+
+\phantomsection\label{boxedtext}
+\textbf{Setting a seed:} You will take random samples and build sampling
+distributions in this lab, which means you should set a seed on top of
+your lab. If this concept is new to you, review the lab on probability.
+
+\subsection{Getting Started}\label{getting-started}
+
+\subsubsection{Load packages}\label{load-packages}
+
+In this lab, we will explore and visualize the data using the
+\textbf{tidyverse} suite of packages, and perform statistical inference
+using \textbf{infer}.
+
+Let's load the packages.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(openintro)}
+\FunctionTok{library}\NormalTok{(infer)}
+\FunctionTok{library}\NormalTok{(infer)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(tinytex)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{The data}\label{the-data}
+
+A 2019 Pew Research report states the following:
+
+To keep our computation simple, we will assume a total population size
+of 100,000 (even though that's smaller than the population size of all
+US adults).
+
+\begin{quote}
+Roughly six-in-ten U.S. adults (62\%) say climate change is currently
+affecting their local community either a great deal or some, according
+to a new Pew Research Center survey.
+
+\textbf{Source:}
+\href{https://www.pewresearch.org/fact-tank/2019/12/02/most-americans-say-climate-change-impacts-their-community-but-effects-vary-by-region/}{Most
+Americans say climate change impacts their community, but effects vary
+by region}
+\end{quote}
+
+In this lab, you will assume this 62\% is a true population proportion
+and learn about how sample proportions can vary from sample to sample by
+taking smaller samples from the population. We will first create our
+population assuming a population size of 100,000. This means 62,000
+(62\%) of the adult population think climate change impacts their
+community, and the remaining 38,000 does not think so.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{us\_adults }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
+  \AttributeTok{climate\_change\_affects =} \FunctionTok{c}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\StringTok{"Yes"}\NormalTok{, }\DecValTok{62000}\NormalTok{), }\FunctionTok{rep}\NormalTok{(}\StringTok{"No"}\NormalTok{, }\DecValTok{38000}\NormalTok{))}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+The name of the data frame is \texttt{us\_adults} and the name of the
+variable that contains responses to the question \emph{``Do you think
+climate change is affecting your local community?''} is
+\texttt{climate\_change\_affects}.
+
+We can quickly visualize the distribution of these responses using a bar
+plot.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(us\_adults, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ climate\_change\_affects)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =} \StringTok{""}\NormalTok{,}
+    \AttributeTok{title =} \StringTok{"Do you think climate change is affecting your local community?"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{coord\_flip}\NormalTok{() }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{EKO_files/figure-latex/bar-plot-pop-1.pdf}
+
+We can also obtain summary statistics to confirm we constructed the data
+frame correctly.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{us\_adults }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{count}\NormalTok{(climate\_change\_affects) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{p =}\NormalTok{ n }\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(n))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 3
+##   climate_change_affects     n     p
+##   <chr>                  <int> <dbl>
+## 1 No                     38000  0.38
+## 2 Yes                    62000  0.62
+\end{verbatim}
+
+In this lab, you'll start with a simple random sample of size 60 from
+the population.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n }\OtherTok{\textless{}{-}} \DecValTok{60}
+\NormalTok{samp }\OtherTok{\textless{}{-}}\NormalTok{ us\_adults }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{sample\_n}\NormalTok{(}\AttributeTok{size =}\NormalTok{ n)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  What percent of the adults in your sample think climate change affects
+  their local community? \textbf{Hint:} Just like we did with the
+  population, we can calculate the proportion of those \textbf{in this
+  sample} who think climate change affects their local community.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{samp }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{count}\NormalTok{(climate\_change\_affects) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{p =}\NormalTok{ n }\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(n))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 3
+##   climate_change_affects     n     p
+##   <chr>                  <int> <dbl>
+## 1 No                        21  0.35
+## 2 Yes                       39  0.65
+\end{verbatim}
+
+\begin{verbatim}
+ climate_change_affects     n     p
+\end{verbatim}
+
+\textbf{1 No 25 0.417}
+
+\textbf{2 Yes 35 0.583}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(samp, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ climate\_change\_affects)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{x =} \StringTok{""}\NormalTok{, }\AttributeTok{y =} \StringTok{""}\NormalTok{,}
+    \AttributeTok{title =} \StringTok{"(sample)Do you think climate change is affecting your local community?"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{coord\_flip}\NormalTok{() }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{EKO_files/figure-latex/pltting sample affetcs bar-plot-pop-1.pdf}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Would you expect another student's sample proportion to be identical
+  to yours? Would you expect it to be similar? Why or why not?
+\end{enumerate}
+
+\textbf{Not exactly similar in terms of figures, but they should have
+nearly the same proportions because we are sampling from the same
+population.}
+
+\subsection{Confidence intervals}\label{confidence-intervals}
+
+Return for a moment to the question that first motivated this lab: based
+on this sample, what can you infer about the population? With just one
+sample, the best estimate of the proportion of US adults who think
+climate change affects their local community would be the sample
+proportion, usually denoted as \(\hat{p}\) (here we are calling it
+\texttt{p\_hat}). That serves as a good \textbf{point estimate}, but it
+would be useful to also communicate how uncertain you are of that
+estimate. This uncertainty can be quantified using a \textbf{confidence
+interval}.
+
+One way of calculating a confidence interval for a population proportion
+is based on the Central Limit Theorem, as
+\(\hat{p} \pm z^\star SE_{\hat{p}}\) is, or more precisely, as
+\[ \hat{p} \pm z^\star \sqrt{ \frac{\hat{p} (1-\hat{p})}{n} } \]
+
+Another way is using simulation, or to be more specific, using
+\textbf{bootstrapping}. The term \textbf{bootstrapping} comes from the
+phrase ``pulling oneself up by one's bootstraps'', which is a metaphor
+for accomplishing an impossible task without any outside help. In this
+case the impossible task is estimating a population parameter (the
+unknown population proportion), and we'll accomplish it using data from
+only the given sample. Note that this notion of saying something about a
+population parameter using only information from an observed sample is
+the crux of statistical inference, it is not limited to bootstrapping.
+
+In essence, bootstrapping assumes that there are more of observations in
+the populations like the ones in the observed sample. So we
+``reconstruct'' the population by resampling from our sample, with
+replacement. Bootstrapping is particularly useful when the sampling
+distribution of the statistic is unknown or difficult to derive
+theoretically. The bootstrapping scheme is as follows:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Step 1.} Take a bootstrap sample - a random sample taken
+  \textbf{with replacement} from the original sample, of the same size
+  as the original sample.With relacement. So even though you're taking a
+  sample of the same size, you're not getting the exact same data
+  because: Some values might appear multiple times.Some values might not
+  appear at all
+\item
+  \textbf{Step 2.} Calculate the bootstrap statistic - a statistic such
+  as mean, median, proportion, slope, etc. computed on the bootstrap
+  samples. This can indeed be any statistic of interest
+\item
+  \textbf{Step 3.} Repeat steps (1) and (2) many times to create a
+  bootstrap distribution - a distribution of bootstrap statistics. The
+  process is repeated many times (typically 1000+ times) to create the
+  bootstrap distribution.
+\item
+  \textbf{Step 4.} Calculate the bounds of the XX\% confidence interval
+  as the middle XX\% of the bootstrap distribution. Calculate the
+  confidence interval bounds by finding the appropriate percentiles of
+  the bootstrap distribution. For example, for a 95\% confidence
+  interval, you would use the 2.5th and 97.5th percentiles.
+\end{itemize}
+
+Instead of coding up each of these steps, we will construct confidence
+intervals using the \textbf{infer} package.
+
+Below is an overview of the functions we will use to construct this
+confidence interval:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.6111}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.3889}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Function
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Purpose
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{specify} & Identify your variable of interest \\
+\texttt{generate} & The number of samples you want to generate \\
+\texttt{calculate} & The sample statistic you want to do inference with,
+or you can also think of this as the population parameter you want to do
+inference forWe use the data we get from a sample (called a sample
+statistic) to make educated guesses about the characteristics of the
+entire population (called population parameters) \\
+\texttt{get\_ci} & Find the confidence interval \\
+\end{longtable}
+
+This code will find the 95 percent confidence interval for proportion of
+US adults who think climate change affects their local community.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{samp }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{specify}\NormalTok{(}\AttributeTok{response =}\NormalTok{ climate\_change\_affects, }\AttributeTok{success =} \StringTok{"Yes"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{generate}\NormalTok{(}\AttributeTok{reps =} \DecValTok{1000}\NormalTok{, }\AttributeTok{type =} \StringTok{"bootstrap"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{calculate}\NormalTok{(}\AttributeTok{stat =} \StringTok{"prop"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{get\_ci}\NormalTok{(}\AttributeTok{level =} \FloatTok{0.95}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 2
+##   lower_ci upper_ci
+##      <dbl>    <dbl>
+## 1    0.533    0.767
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  In \texttt{specify} we specify the \texttt{response} variable and the
+  level of that variable we are calling a \texttt{success}.
+\item
+  In \texttt{generate} we provide the number of resamples we want from
+  the population in the \texttt{reps} argument (this should be a
+  reasonably large number) as well as the type of resampling we want to
+  do, which is \texttt{"bootstrap"} in the case of constructing a
+  confidence interval.
+\item
+  Then, we \texttt{calculate} the sample statistic of interest for each
+  of these resamples, which is \texttt{prop}ortion.
+\end{itemize}
+
+Feel free to test out the rest of the arguments for these functions,
+since these commands will be used together to calculate confidence
+intervals and solve inference problems for the rest of the semester. But
+we will also walk you through more examples in future chapters.
+
+To recap: even though we don't know what the full population looks like,
+we're 95\% confident that the true proportion of US adults who think
+climate change affects their local community is between the two bounds
+reported as result of this pipeline.
+
+\subsection{Confidence levels}\label{confidence-levels}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  In the interpretation above, we used the phrase ``95\% confident''.
+  What does ``95\% confidence'' mean?
+
+  \textbf{We are relying on method hat will most likely produce the same
+  same results in the long run: The 95\% refers to how often the method
+  works across many uses, not to any single use. We used a method (the
+  bootstrap and 95\% confidence level) that, in the long run, produces
+  intervals that capture the true population proportion about 95\% of
+  the time.}
+\end{enumerate}
+
+In this case, you have the rare luxury of knowing the true population
+proportion (62\%) since you have data on the entire population.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Does your confidence interval capture the true population proportion
+  of US adults who think climate change affects their local community?
+  If you are working on this lab in a classroom, does your neighbor's
+  interval capture this value?
+
+  \textbf{? If we know the true population, then yes, the confidence
+  interval should capture the entire population. There's a good chance
+  this interval captures the true population proportion of 62\%.}
+\item
+  Each student should have gotten a slightly different confidence
+  interval. What proportion of those intervals would you expect to
+  capture the true population mean? Why?
+\end{enumerate}
+
+\textbf{95\% of the intervals would be expected to capture the true
+population proportion (62\% in this case) Here's why:}
+
+\textbf{By definition, a 95\% confidence interval means that if we
+repeated this sampling and interval construction process many times,
+about 95\% of the intervals would contain the true population
+parameter.}
+
+\textbf{In this case: Each student is taking a different random sample
+of n=60 from the same population. Each student is using that sample to
+construct a 95\% confidence interval using the same bootstrap method.
+Each interval will likely be different because:Their initial samples of
+60 are different.Their 1000 bootstrap resamples are different}
+
+\textbf{If we collected all these intervals: About 95\% of them should
+contain 0.62 (the true proportion). About 5\% would miss the true
+proportion (either falling entirely above or below 0.62). The 95\%
+refers to the long-run success rate of the method, not the probability
+that any single interval contains the true proportion}.
+
+In the next part of the lab, you will collect many samples to learn more
+about how sample proportions and confidence intervals constructed based
+on those samples vary from one sample to another.
+
+\begin{itemize}
+\tightlist
+\item
+  Obtain a random sample.
+\item
+  Calculate the sample proportion, and use these to calculate and store
+  the lower and upper bounds of the confidence intervals.
+\item
+  Repeat these steps 50 times.
+\end{itemize}
+
+Doing this would require learning programming concepts like iteration so
+that you can automate repeating running the code you've developed so far
+many times to obtain many (50) confidence intervals. In order to keep
+the programming simpler, we are providing the interactive app below that
+basically does this for you and created a plot similar to Figure 5.6 on
+\href{https://www.openintro.org/os}{OpenIntro Statistics, 4th Edition
+(page 182)}.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Given a sample size of 60, 1000 bootstrap samples for each interval,
+  and 50 confidence intervals constructed (the default values for the
+  above app), what proportion of your confidence intervals include the
+  true population proportion? Is this proportion exactly equal to the
+  confidence level? If not, explain why. Make sure to include your plot
+  in your answer.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(here)}
+\CommentTok{\#knitr::include\_graphics(here("05\_foundations\_for\_inference", "1.png"))}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Failed to attach the images, tried all means, must be because i
+use Linux Mint. anyway I ran it a few times and used two images}
+
+\textbf{Image 1: Has 1 red line (miss) and 49 blue lines (captures)
+Image 2: Has 6 red lines (misses) and 44 blue lines (captures) So:}
+
+\textbf{For these 50 intervals, 44/50 = 0.88 or 88\% of the intervals
+captured the true proportion This is not exactly equal to the 95\%
+confidence level}
+
+\textbf{Why the difference?}
+
+\textbf{Random variation: With only 50 intervals, we don't expect to see
+exactly 95\% capture rate. Just like flipping a coin 50 times won't
+always give exactly 25 heads. Three sources of randomness here:}
+
+\textbf{Each original sample of 60 is random Each set of 1000 bootstrap
+samples is random We only have 50 intervals (small number of
+replications)}
+
+\textbf{If we were to construct many more intervals (say 10,000 instead
+of 50), the proportion would likely be closer to 95\%. The 95\%
+confidence level is a long-run frequency interpretation - if we repeated
+this process infinitely many times, about 95\% of intervals would
+contain the true proportion. In any finite sample of intervals, like our
+50 here, we expect some deviation from exactly 95\%}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{More Practice}\label{more-practice}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Choose a different confidence level than 95\%. Would you expect a
+  confidence interval at this level to me wider or narrower than the
+  confidence interval you calculated at the 95\% confidence level?
+  Explain your reasoning.
+
+  \textbf{I chose and 20, 45, 98 and 99 and ran each once,. ran 99 a
+  couple times though Let me analyze the confidence intervals at
+  different levels:}
+
+  \textbf{Looking at widths:}
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{99\% CI (Image 1): Widest intervals}
+\item
+  \textbf{98\% CI (Image 2): Very wide, but slightly narrower than 99\%}
+\item
+  \textbf{80\% CI (Image 3): Narrower intervals}
+\item
+  \textbf{45\% CI (Image 4): Even narrower}
+\item
+  \textbf{20\% CI (Image 5): Narrowest intervals}
+\end{itemize}
+
+\textbf{The pattern shows: As confidence level decreases, the intervals
+become narrower.}
+
+\textbf{Why this happens: 1. Higher confidence (like 99\% or 98\%): -
+Needs to ``catch'' the true parameter more often - Must be wider to have
+a higher chance of containing the true value - Trades precision for
+confidence}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \textbf{Lower confidence (like 45\% or 20\%):}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Accepts missing the true parameter more often}
+  \item
+    \textbf{Can be narrower since it doesn't need to capture the
+    parameter as frequently}
+  \item
+    \textbf{Trades confidence for precision}
+  \end{itemize}
+\end{enumerate}
+
+\textbf{Am personally Thinking of it like a net:}
+
+\textbf{- A wide net (high confidence level) catches more fish but is
+less precise}
+
+\textbf{- A narrow net (low confidence level) is more precise but misses
+more fish}
+
+\textbf{This pattern illustrates the fundamental trade-off in confidence
+intervals: higher confidence requires wider intervals, while narrower
+intervals come with lower confidence.}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Using code from the \textbf{infer} package and data fromt the one
+  sample you have (\texttt{samp}), find a confidence interval for the
+  proportion of US Adults who think climate change is affecting their
+  local community with a confidence level of your choosing (other than
+  95\%) and interpret it.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Using the infer package for a 90\% confidence interval}
+\NormalTok{samp }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{specify}\NormalTok{(}\AttributeTok{response =}\NormalTok{ climate\_change\_affects, }\AttributeTok{success =} \StringTok{"Yes"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{generate}\NormalTok{(}\AttributeTok{reps =} \DecValTok{1000}\NormalTok{, }\AttributeTok{type =} \StringTok{"bootstrap"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{calculate}\NormalTok{(}\AttributeTok{stat =} \StringTok{"prop"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{get\_ci}\NormalTok{(}\AttributeTok{level =} \FloatTok{0.90}\NormalTok{)  }\CommentTok{\# Changed from 0.95 to 0.90}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 2
+##   lower_ci upper_ci
+##      <dbl>    <dbl>
+## 1     0.55     0.75
+\end{verbatim}
+
+\textbf{This 90\% confidence interval for the proportion of US adults
+who think climate change affects their local community is (0.55, 0.75)
+or between 55\% and 75\%. A few observations:}
+
+\textbf{The true population proportion (0.62 or 62\%) is contained
+within this interval.}
+
+\textbf{The interval width is 0.75 - 0.55 = 0.20 (or 20 percentage
+points)}
+
+\textbf{The interval is not symmetric around the sample proportion (this
+is normal for proportion confidence intervals)}
+
+\textbf{This interval is likely narrower than a 95\% confidence interval
+would be for the same data, since:}
+
+\textbf{A 90\% confidence level means we're willing to be ``wrong'' 10\%
+of the time (vs 5\% for a 95\% CI)}
+
+\textbf{This allows us to create a more precise (narrower) interval But
+we have less confidence that this interval contains the true population
+proportion}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Using the app, calculate 50 confidence intervals at the confidence
+  level you chose in the previous question, and plot all intervals on
+  one plot, and calculate the proportion of intervals that include the
+  true population proportion. How does this percentage compare to the
+  confidence level selected for the intervals?
+\end{enumerate}
+
+\textbf{Still failing to attach images , but Counting the intervals:}
+
+\textbf{Total intervals: 50 Intervals in blue (capturing true proportion
+of 0.62): \textasciitilde45 Intervals in red (missing true proportion):
+\textasciitilde5}
+
+\textbf{Calculating capture percentage:}
+
+\textbf{Approximately 45/50 = 0.90 or 90\% of intervals captured the
+true proportion This matches almost exactly with our chosen 90\%
+confidence level}
+
+\textbf{This is a great demonstration of what a confidence level means
+in practice:}
+
+\textbf{We set our confidence level at 90\% We constructed 50 different
+intervals About 90\% of them (45) captured the true population
+proportion About 10\% of them (5) missed it}
+
+\textbf{The observed capture rate (90\%) aligns remarkably well with the
+chosen confidence level (90\%) in this case. However, it's important to
+note:}
+
+\textbf{This close match is somewhat lucky - with only 50 intervals, we
+could easily see more variation In the long run (with many more
+intervals), we'd expect the capture rate to converge to 90\% Each
+individual interval still either contains or doesn't contain the true
+proportion - the 90\% refers to the long-run behavior of the method}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Lastly, try one more (different) confidence level. First, state how
+  you expect the width of this interval to compare to previous ones you
+  calculated. Then, calculate the bounds of the interval using the
+  \textbf{infer} package and data from \texttt{samp} and interpret it.
+  Finally, use the app to generate many intervals and calculate the
+  proportion of intervals that are capture the true population
+  proportion.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Using the infer package for a 80\% confidence interval}
+\NormalTok{samp }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{specify}\NormalTok{(}\AttributeTok{response =}\NormalTok{ climate\_change\_affects, }\AttributeTok{success =} \StringTok{"Yes"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{generate}\NormalTok{(}\AttributeTok{reps =} \DecValTok{1000}\NormalTok{, }\AttributeTok{type =} \StringTok{"bootstrap"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{calculate}\NormalTok{(}\AttributeTok{stat =} \StringTok{"prop"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{get\_ci}\NormalTok{(}\AttributeTok{level =} \FloatTok{0.80}\NormalTok{)  }\CommentTok{\# Changed from 0.90 to 0.80}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 2
+##   lower_ci upper_ci
+##      <dbl>    <dbl>
+## 1    0.567    0.717
+\end{verbatim}
+
+  \textbf{Expected width comparison: An 80\% confidence interval should
+  be narrower than both the 95\% and 90\% intervals we calculated
+  earlier. This is because with lower confidence (80\%), we're willing
+  to be ``wrong'' more often (20\% of the time), allowing us to make
+  more precise (narrower) estimates}
+\end{enumerate}
+
+lower\_ci upper\_ci
+
+1 0.567 0.733
+
+\textbf{Analyzing the calculated interval (0.567, 0.733):}
+
+\textbf{The interval suggests we're 80\% confident that the true
+proportion is between 56.7\% and 73.3\% Width = 0.733 - 0.567 = 0.166
+(or 16.6 percentage points) This is indeed narrower than our previous
+90\% CI (0.55, 0.75) which had a width of 0.20 (20 percentage points)
+The true proportion (0.62) is contained within this interval}
+
+\textbf{Looking at the simulation from the app (seen in the shiny app):}
+
+\textbf{Total intervals: 50 Blue lines (captures): \textasciitilde44-45
+Red lines (misses): \textasciitilde5-6 Capture rate:
+\textasciitilde44/50 = 88\% This capture rate is actually higher than
+our chosen 80\% confidence level The difference (88\% vs 80\%) is likely
+due to random variation in this particular set of simulations - with
+more runs, we'd expect the capture rate to converge closer to 80\%}
+
+\textbf{The key point here is that while we got a narrower interval with
+80\% confidence as expected, the actual capture rate in our simulation
+was a bit higher than 80\%, demonstrating that results from a finite
+number of trials can differ from the theoretical expectation}.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Using the app, experiment with different sample sizes and comment on
+  how the widths of intervals change as sample size changes (increases
+  and decreases). \textbf{Higher confidence intervals are wider because
+  they need to capture the true parameter more often---like using a wide
+  net to catch more fish. In contrast, lower confidence intervals are
+  narrower (more precise), but they're more likely to miss the true
+  value. This illustrates the trade-off: as you increase confidence, you
+  sacrifice precision, and vice versa.}
+\end{enumerate}
+
+\textbf{Insert your answer here}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Finally, given a sample size (say, 60), how does the width of the
+  interval change as you increase the number of bootstrap samples.
+  \textbf{Hint:} Does changing the number of bootstap samples affect the
+  standard error?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# With 100 resamples}
+\NormalTok{samp }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{specify}\NormalTok{(}\AttributeTok{response =}\NormalTok{ climate\_change\_affects, }\AttributeTok{success =} \StringTok{"Yes"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{generate}\NormalTok{(}\AttributeTok{reps =} \DecValTok{100}\NormalTok{, }\AttributeTok{type =} \StringTok{"bootstrap"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{calculate}\NormalTok{(}\AttributeTok{stat =} \StringTok{"prop"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{get\_ci}\NormalTok{(}\AttributeTok{level =} \FloatTok{0.95}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 2
+##   lower_ci upper_ci
+##      <dbl>    <dbl>
+## 1    0.558    0.759
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# With 1000 resamples}
+\NormalTok{samp }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{specify}\NormalTok{(}\AttributeTok{response =}\NormalTok{ climate\_change\_affects, }\AttributeTok{success =} \StringTok{"Yes"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{generate}\NormalTok{(}\AttributeTok{reps =} \DecValTok{1000}\NormalTok{, }\AttributeTok{type =} \StringTok{"bootstrap"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{calculate}\NormalTok{(}\AttributeTok{stat =} \StringTok{"prop"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{get\_ci}\NormalTok{(}\AttributeTok{level =} \FloatTok{0.95}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 2
+##   lower_ci upper_ci
+##      <dbl>    <dbl>
+## 1    0.533    0.767
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# With 10000 resamples}
+\NormalTok{samp }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{specify}\NormalTok{(}\AttributeTok{response =}\NormalTok{ climate\_change\_affects, }\AttributeTok{success =} \StringTok{"Yes"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{generate}\NormalTok{(}\AttributeTok{reps =} \DecValTok{10000}\NormalTok{, }\AttributeTok{type =} \StringTok{"bootstrap"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{calculate}\NormalTok{(}\AttributeTok{stat =} \StringTok{"prop"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{get\_ci}\NormalTok{(}\AttributeTok{level =} \FloatTok{0.95}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 2
+##   lower_ci upper_ci
+##      <dbl>    <dbl>
+## 1    0.533    0.767
+\end{verbatim}
+
+\textbf{The key insight is that increasing the number of bootstrap
+samples (reps) does NOT substantially affect the width of the confidence
+interval because:}
+
+\textbf{Bootstrap resampling is about better estimating the sampling
+distribution It doesn't change the underlying sample size (n=60)}
+
+\textbf{The standard error primarily depends on the original sample
+size, not the number of bootstrap replicates}
+
+\textbf{The width of these intervals would be very similar because:}
+
+\textbf{Standard error depends on √(p(1-p)/n) where n is the original
+sample size. More bootstrap samples just give us a more stable estimate
+of this same standard error. The fundamental uncertainty in our estimate
+comes from our original sample size, not from how many times we resample
+it}
+
+\textbf{The main benefit of more bootstrap samples is:}
+
+\textbf{More stable estimates Smoother sampling distributions. More
+precise percentile calculations. But it doesn't reduce the width of the
+interval in any meaningful way.}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\end{document}
