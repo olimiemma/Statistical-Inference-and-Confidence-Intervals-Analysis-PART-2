@@ -121,8 +121,10 @@ Depoloyed app at https://openintro.shinyapps.io/sampling_distributions/.
 ![Screenshot from 2025-02-18 22-02-15](https://github.com/user-attachments/assets/2d4351b0-a717-4eaf-a890-3098dc6b27a9)
 ![Screenshot from 2025-02-18 22-02-43](https://github.com/user-attachments/assets/b87de7a7-00fe-4671-86f4-7213bdc5c413)
 ![preview](https://github.com/user-attachments/assets/033ecb38-6784-46bc-a6f3-ecb37b40aa40)
-![Screenshot from 2025-02-18 22-41-05](https://github.com/user-attachments/assets/76a1da5f-03ee-47f4-84f1-288065ea887c)
+![Screenshot from 2025-02-18 22-41-05](https://github.com/user-attachments/assets/76a1da5f-03ee-47f4-84f1-28![8f31ebf6-b74d-4410-8a01-6cf00583c726](https://github.com/user-attachments/assets/13fbf820-e853-4943-a991-153768dcba8e)
+8065ea887c)
 
 ![2](https://github.com/user-attachments/assets/a494e433-b7bf-4b1f-9c47-b4b441488780)
 
+![Screenshot from 2025-02-18 21-34-59](https://github.com/user-attachments/assets/b6a4676b-8645-4486-8e0d-33a3101ae7fd)
 
