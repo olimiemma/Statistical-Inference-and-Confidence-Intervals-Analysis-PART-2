@@ -1,4 +1,4 @@
-# Statistical Inference and Confidence Intervals Analysis
+# climate change's local impact: Statistical Inference and Confidence Intervals Analysis
 
 ## Overview
 This project explores confidence intervals in statistical inference, focusing on analyzing public opinion about climate change's local impact. Using simulated Pew Research data, the analysis demonstrates how to construct and interpret confidence intervals, exploring their properties under different confidence levels and sample sizes.
